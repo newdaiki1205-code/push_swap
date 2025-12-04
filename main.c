@@ -11,16 +11,46 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+//#include "sort_array.c"
+#include <stdio.h>
+
+// int	main(void)
+// {
+// 	sort_array *array;
+// 	char *av[] = {"3", "2", "1", NULL};
+
+// 	array = make_array(av);
+// 	if (!array)
+// 		return (write(2, "Error\n", 6), -1);
+// 	int i = 0;
+// 	while(i < 4)
+// 	{
+// 		printf("%ld ", array[i].value);
+// 		i++;
+// 	}
+	
+// 	return (0);
+// }
+
 
 int	main(int ac, char **av)
 {
-	my_list *head;
+	sort_array *array;
+	//my_list *head;
 
-	head = NULL;
 	if (ac < 2)
 		NULL;
-	head = make_list(av);
-	if (!head)
+	array = make_array(av);
+	if (!array)
 		return (write(2, "Error\n", 6), -1);
+	// head = NULL;
+	// head = make_list(av);
+	int i = 0;
+	while(i < 10)
+	{
+		printf("%ld ", array[i].value);
+		i++;
+	}
+	
 	return (0);
 }

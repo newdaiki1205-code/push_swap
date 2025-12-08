@@ -13,7 +13,6 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libft/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -23,11 +22,21 @@ typedef struct ps_list
 	struct ps_list	*next;
 }					my_list;
 
-int					int_check(char **av);
-int					is_it_integers(const char *s);
-int					is_it_intmax(const char *s);
-int					is_it_intmin(const char *s);
-int					is_it_duplicated(my_list *head);
+typedef struct initial_array
+{
+	long value;
+	int order;
+}	sort_array;
+
+// int					int_check(char **av);
+// int					is_it_integers(const char *s);
+// int					is_it_intmax(const char *s);
+// int					is_it_intmin(const char *s);
+sort_array 			*make_array(char **av);
+long 				int_error_atoi(char *av);
+void quick_sort(sort_array *array, int left, int right);
+void	is_it_duplicated(sort_array **array, int size);
+int *make_look_up(char **av, sort_array *array);
 my_list				*make_list(char **av);
 my_list				*make_newnode(char *av);
 void				add_front(my_list **head, my_list *newnode);

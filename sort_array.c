@@ -12,15 +12,11 @@
 
 #include "push_swap.h"
 
-sort_array *make_array(char **av)
+sort_array *make_array(char **av, int size)
 {
-    int size;
     int i;
     sort_array *array;
 
-    size = 0;
-    while(av[size + 1])
-        size++;
     array = (sort_array*)malloc(sizeof(sort_array) * (size));
     if(!array)
         return NULL;
@@ -76,8 +72,8 @@ void quick_sort(sort_array *array, int left, int right)
     {
         while(1)
         {
-            while(array[++i].value < base.value);
-            while(array[--j].value > base.value);
+            while(i < right && array[++i].value < base.value);
+            while(j > left && array[--j].value > base.value);
             if(i >= j)
                 break;
             temp = array[i];
@@ -111,24 +107,22 @@ void	is_it_duplicated(sort_array **array, int size)
     }
 }
 
-int *make_look_up(char **av, sort_array *array)
+map_array *make_look_up(sort_array *array, int size)
 {
-    int *look_up;
-    int size;
+    map_array *look_up;
     int rank;
 
-    size = 0;
-    while(av[size + 1])
-        size++;
-    look_up = (int*)malloc(sizeof(int) * size);
+    look_up = (map_array*)malloc(sizeof(map_array) * size);
     if(!look_up)
         return NULL;
     rank = 0;
     while(rank < size)
     {
-        look_up[array[rank].order] = rank;
+        look_up[array[rank].order].value = array[rank].value;
+        look_up[array[rank].order].rank = rank;
         rank++;
     }
+    free(array);
     return (look_up);
 }
 

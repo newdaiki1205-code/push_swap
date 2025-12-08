@@ -16,11 +16,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct ps_list
+typedef struct s_list
 {
-	int				content;
-	struct ps_list	*next;
-}					my_list;
+	long			content;
+	int				rank;
+	struct s_list	*next;
+}					t_list;
 
 typedef struct initial_array
 {
@@ -28,18 +29,24 @@ typedef struct initial_array
 	int order;
 }	sort_array;
 
+typedef struct second_array
+{
+	long value;
+	int rank;
+} map_array;
+
 // int					int_check(char **av);
 // int					is_it_integers(const char *s);
 // int					is_it_intmax(const char *s);
 // int					is_it_intmin(const char *s);
-sort_array 			*make_array(char **av);
+sort_array *make_array(char **av, int size);
 long 				int_error_atoi(char *av);
 void quick_sort(sort_array *array, int left, int right);
 void	is_it_duplicated(sort_array **array, int size);
-int *make_look_up(char **av, sort_array *array);
-my_list				*make_list(char **av);
-my_list				*make_newnode(char *av);
-void				add_front(my_list **head, my_list *newnode);
-void				free_list(my_list **head);
+map_array *make_look_up(sort_array *array, int size);
+t_list	*make_list(map_array *look_up, int size);
+t_list	*make_newnode(map_array look_up);
+void				add_front(t_list **head, t_list *newnode);
+void				free_list(t_list **head);
 
 #endif

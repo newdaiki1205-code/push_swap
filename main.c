@@ -17,20 +17,28 @@
 int	main(int ac, char **av)
 {
 	sort_array *array;
-	int *look_up;
+	map_array *look_up;
+	int size;
+	t_list *a;
 
 	if (ac < 2)
 		NULL;
-	array = make_array(av);
+	size = ac - 1;
+	array = make_array(av, size);
 	if (!array)
 		return (write(2, "Error\n", 6), -1);
-	look_up = make_look_up(av, array);
+	look_up = make_look_up(array, size);
 	if (!look_up)
-		return (write(2, "Error\n", 6), -1);
+		return (free(array), write(2, "Error\n", 6), -1);
+	a = make_list(look_up, size);
+	if (!a)
+		return (free(look_up), write(2, "Error\n", 6), -1);
 	int i = 0;
 	while(i < 4)
 	{
-		printf("%d ", look_up[i]);
+		printf("%ld ", a->content);
+		printf("%d\n", a->rank);
+		a = a->next;
 		i++;
 	}
 	

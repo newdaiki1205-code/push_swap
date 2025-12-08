@@ -12,19 +12,20 @@
 
 #include "push_swap.h"
 
-my_list	*make_newnode(char *av)
+t_list	*make_newnode(map_array look_up)
 {
-	my_list	*newnode;
+	t_list	*newnode;
 
-	newnode = (my_list *)malloc(sizeof(my_list));
+	newnode = (t_list *)malloc(sizeof(t_list));
 	if (!newnode)
 		return (NULL);
-	newnode->content = ft_atoi(av);
+	newnode->content = look_up.value;
+	newnode->rank = look_up.rank;
 	newnode->next = NULL;
 	return (newnode);
 }
 
-void	add_front(my_list **head, my_list *newnode)
+void	add_front(t_list **head, t_list *newnode)
 {
 	if (!head || !newnode)
 		return ;
@@ -32,9 +33,9 @@ void	add_front(my_list **head, my_list *newnode)
 	*head = newnode;
 }
 
-void	free_list(my_list **head)
+void	free_list(t_list **head)
 {
-	my_list	*temp;
+	t_list	*temp;
 
 	while (*head)
 	{
@@ -44,25 +45,22 @@ void	free_list(my_list **head)
 	}
 }
 
-my_list	*make_list(char **av)
+t_list	*make_list(map_array *look_up, int size)
 {
 	int		i;
-	my_list	*head;
-	my_list	*newnode;
+	t_list	*head;
+	t_list	*newnode;
 
 	head = NULL;
-	i = 1;
-	if (int_check(av))
-		return (NULL);
-	while (av[i])
+	i = 0;
+	while (i < size)
 	{
-		newnode = make_newnode(av[i]);
+		newnode = make_newnode(look_up[i]);
 		if (!newnode)
 			return (free_list(&head), NULL);
 		add_front(&head, newnode);
 		i++;
 	}
-	if (is_it_duplicated(head))
-		return (free_list(&head), NULL);
+	free(look_up);
 	return (head);
 }

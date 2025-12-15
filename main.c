@@ -46,15 +46,5 @@ int	main(int ac, char **av)
 		a = a->next;
 		i++;
 	}
-	// printf("\n");
-	// i = 0;
-	// while (i < 1)
-	// {
-	// 	printf("%ld ", b->content);
-	// 	printf("%d\n", b->rank);
-	// 	b = b->next;
-	// 	i++;
-	// }
-
 	return (0);
 }

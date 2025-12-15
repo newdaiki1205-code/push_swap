@@ -42,7 +42,7 @@ void				is_it_duplicated(sort_array **array, int size);
 map_array			*make_look_up(sort_array *array, int size);
 t_list				*make_stack_a(map_array *look_up, int size);
 t_list				*make_newnode(map_array look_up);
-void				add_front(t_list **head, t_list *newnode);
+void				add_back(t_list **head, t_list *newnode);
 void				free_list(t_list **head);
 void				sa(t_list **a);
 void				sb(t_list **b);

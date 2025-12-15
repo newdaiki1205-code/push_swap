@@ -25,12 +25,33 @@ t_list	*make_newnode(map_array look_up)
 	return (newnode);
 }
 
-void	add_front(t_list **head, t_list *newnode)
+// void	add_front(t_list **head, t_list *newnode)
+// {
+// 	if (!head || !newnode)
+// 		return ;
+// 	newnode->next = *head;
+// 	*head = newnode;
+// }
+
+void	add_back(t_list **head, t_list *newnode)
 {
+	t_list *current;
+	t_list *temp;
+	
 	if (!head || !newnode)
 		return ;
-	newnode->next = *head;
-	*head = newnode;
+	if (!*head)
+	{
+		newnode->next = *head;
+		*head = newnode;
+		return;
+	}
+	current = *head;
+	while((current)->next)
+		current = current->next;
+	temp = current->next;
+	newnode->next = temp;
+	current->next = newnode;
 }
 
 void	free_list(t_list **head)
@@ -58,7 +79,7 @@ t_list	*make_stack_a(map_array *look_up, int size)
 		newnode = make_newnode(look_up[i]);
 		if (!newnode)
 			return (free_list(&head), NULL);
-		add_front(&head, newnode);
+		add_back(&head, newnode);
 		i++;
 	}
 	free(look_up);

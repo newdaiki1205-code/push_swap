@@ -37,9 +37,9 @@ int	main(int ac, char **av)
 	if (!a)
 		return (free(look_up), write(2, "Error\n", 6), -1);
 	b = NULL;
-	rra(&a);
+	radix_sort(&a, &b, size);
 	int i = 0;
-	while (i < 3)
+	while (i < size)
 	{
 		printf("%ld ", a->content);
 		printf("%d\n", a->rank);

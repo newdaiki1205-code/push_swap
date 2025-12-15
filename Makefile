@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SRC = main.c sort_array.c list_handling.c rule_swap.c rule_push.c rule_rotate.c rule_reverse_rotate.c
+SRC = main.c sort_array.c list_handling.c rule_swap.c rule_push.c rule_rotate.c rule_reverse_rotate.c radix_sort.c
 
 CC = cc
 FLAGS = -Wall -Werror -Wextra

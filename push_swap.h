@@ -57,5 +57,6 @@ void				rrb(t_list **b);
 void				rrr(t_list **a, t_list **b);
 t_list				*find_last(t_list *a);
 t_list				*find_pre_last(t_list *node);
+void radix_sort(t_list **a, t_list **b, int size);
 
 #endif

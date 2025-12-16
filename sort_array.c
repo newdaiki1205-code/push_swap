@@ -6,7 +6,7 @@
 /*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 12:36:13 by dshirais          #+#    #+#             */
-/*   Updated: 2025/12/11 12:37:01 by dshirais         ###   ########.fr       */
+/*   Updated: 2025/12/16 19:01:34 by dshirais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@ sort_array	*make_array(char **av, int size)
 			return (free(array), NULL);
 		i++;
 	}
+	//i = 0;
+	// while(i < size)
+	// {
+	// 	if(array[i].value > array[i + 1].value)
+	// 		break;
+	// 	i++; 
+	// }
+	// if(i == size - 1)
+	// 	return NULL;
 	quick_sort(array, 0, size - 1);
 	is_it_duplicated(&array, size);
 	return (array);
@@ -63,7 +72,6 @@ void	quick_sort(sort_array *array, int left, int right)
 	sort_array	base;
 	int			i;
 	int			j;
-	sort_array	temp;
 
 	base = array[left];
 	i = left;
@@ -78,15 +86,22 @@ void	quick_sort(sort_array *array, int left, int right)
 				;
 			if (i >= j)
 				break ;
-			temp = array[i];
-			array[i] = array[j];
-			array[j] = temp;
+			quick_swap(array, i, j);
 		}
 		array[left] = array[j];
 		array[j] = base;
 		quick_sort(array, left, j - 1);
 		quick_sort(array, j + 1, right);
 	}
+}
+
+void quick_swap(sort_array *array, int i, int j)
+{
+	sort_array temp;
+	
+	temp = array[i];
+	array[i] = array[j];
+	array[j] = temp;
 }
 
 void	is_it_duplicated(sort_array **array, int size)

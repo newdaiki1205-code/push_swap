@@ -6,7 +6,7 @@
 /*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 17:05:25 by dshirais          #+#    #+#             */
-/*   Updated: 2025/12/11 14:20:52 by dshirais         ###   ########.fr       */
+/*   Updated: 2025/12/16 17:20:26 by dshirais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,6 @@ t_list	*make_newnode(map_array look_up)
 	newnode->next = NULL;
 	return (newnode);
 }
-
-// void	add_front(t_list **head, t_list *newnode)
-// {
-// 	if (!head || !newnode)
-// 		return ;
-// 	newnode->next = *head;
-// 	*head = newnode;
-// }
 
 void	add_back(t_list **head, t_list *newnode)
 {
@@ -66,6 +58,7 @@ void	free_list(t_list **head)
 	}
 }
 
+
 t_list	*make_stack_a(map_array *look_up, int size)
 {
 	int i;
@@ -85,4 +78,3 @@ t_list	*make_stack_a(map_array *look_up, int size)
 	free(look_up);
 	return (head);
 }
-

@@ -6,18 +6,18 @@
 /*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 12:36:13 by dshirais          #+#    #+#             */
-/*   Updated: 2025/12/16 19:01:34 by dshirais         ###   ########.fr       */
+/*   Updated: 2025/12/27 15:00:01 by dshirais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-sort_array	*make_array(char **av, int size)
+t_sortarray	*make_array(char **av, int size)
 {
 	int			i;
-	sort_array	*array;
+	t_sortarray	*array;
 
-	array = (sort_array *)malloc(sizeof(sort_array) * (size));
+	array = (t_sortarray *)malloc(sizeof(t_sortarray) * (size));
 	if (!array)
 		return (NULL);
 	i = 0;
@@ -29,15 +29,6 @@ sort_array	*make_array(char **av, int size)
 			return (free(array), NULL);
 		i++;
 	}
-	//i = 0;
-	// while(i < size)
-	// {
-	// 	if(array[i].value > array[i + 1].value)
-	// 		break;
-	// 	i++; 
-	// }
-	// if(i == size - 1)
-	// 	return NULL;
 	quick_sort(array, 0, size - 1);
 	is_it_duplicated(&array, size);
 	return (array);
@@ -67,9 +58,9 @@ long	int_error_atoi(char *av)
 	return (res * sign);
 }
 
-void	quick_sort(sort_array *array, int left, int right)
+void	quick_sort(t_sortarray *array, int left, int right)
 {
-	sort_array	base;
+	t_sortarray	base;
 	int			i;
 	int			j;
 
@@ -95,16 +86,16 @@ void	quick_sort(sort_array *array, int left, int right)
 	}
 }
 
-void quick_swap(sort_array *array, int i, int j)
+void	quick_swap(t_sortarray *array, int i, int j)
 {
-	sort_array temp;
-	
+	t_sortarray	temp;
+
 	temp = array[i];
 	array[i] = array[j];
 	array[j] = temp;
 }
 
-void	is_it_duplicated(sort_array **array, int size)
+void	is_it_duplicated(t_sortarray **array, int size)
 {
 	int	i;
 	int	j;
@@ -122,23 +113,4 @@ void	is_it_duplicated(sort_array **array, int size)
 		i++;
 		j++;
 	}
-}
-
-map_array	*make_look_up(sort_array *array, int size)
-{
-	map_array *look_up;
-	int rank;
-
-	look_up = (map_array *)malloc(sizeof(map_array) * size);
-	if (!look_up)
-		return (NULL);
-	rank = 0;
-	while (rank < size)
-	{
-		look_up[array[rank].order].value = array[rank].value;
-		look_up[array[rank].order].rank = rank;
-		rank++;
-	}
-	free(array);
-	return (look_up);
 }

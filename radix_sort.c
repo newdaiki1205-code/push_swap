@@ -6,7 +6,7 @@
 /*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 14:10:30 by dshirais          #+#    #+#             */
-/*   Updated: 2025/12/16 19:11:37 by dshirais         ###   ########.fr       */
+/*   Updated: 2025/12/27 19:18:33 by dshirais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	radix_sort(t_list **a, t_list **b, int size)
 			else
 				check = pb(a, b);
 			if (check < 0)
-				return (free_list(a), free_list(b), -1);
+				return (-1);
 			counter++;
 		}
 		if (before_next_sort(a, b) < 0)
@@ -49,7 +49,7 @@ int	before_next_sort(t_list **a, t_list **b)
 	{
 		check = pa(a, b);
 		if (check < 0)
-			return (free_list(a), free_list(b), -1);
+			return (-1);
 	}
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 17:05:25 by dshirais          #+#    #+#             */
-/*   Updated: 2025/12/16 17:20:26 by dshirais         ###   ########.fr       */
+/*   Updated: 2025/12/27 14:58:50 by dshirais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*make_newnode(map_array look_up)
+t_list	*make_newnode(t_maparray look_up)
 {
 	t_list	*newnode;
 
@@ -27,19 +27,19 @@ t_list	*make_newnode(map_array look_up)
 
 void	add_back(t_list **head, t_list *newnode)
 {
-	t_list *current;
-	t_list *temp;
-	
+	t_list	*current;
+	t_list	*temp;
+
 	if (!head || !newnode)
 		return ;
 	if (!*head)
 	{
 		newnode->next = *head;
 		*head = newnode;
-		return;
+		return ;
 	}
 	current = *head;
-	while((current)->next)
+	while ((current)->next)
 		current = current->next;
 	temp = current->next;
 	newnode->next = temp;
@@ -58,12 +58,11 @@ void	free_list(t_list **head)
 	}
 }
 
-
-t_list	*make_stack_a(map_array *look_up, int size)
+t_list	*make_stack_a(t_maparray *look_up, int size)
 {
-	int i;
-	t_list *head;
-	t_list *newnode;
+	int		i;
+	t_list	*head;
+	t_list	*newnode;
 
 	head = NULL;
 	i = 0;

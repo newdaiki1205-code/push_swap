@@ -36,7 +36,7 @@ make fclean
 ```
 
 ## Resources
-Algorithms: learned through *Algorithms in C by Robert Sedgewick (1990)*
+Algorithms: learned through *Algorithms in C by Robert Sedgewick (1990)*.
 
 AI Usage
 During this project, I used Gemini (AI) as a thought partner for the architecture planning; discussing the efficiency of $O(N \log N)$ vs $O(N^2)$ approaches for the initial error checking and ranking.

@@ -1,43 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rule_push.c                                        :+:      :+:    :+:   */
+/*   medi_sort_help.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/11 14:10:30 by dshirais          #+#    #+#             */
-/*   Updated: 2025/12/27 14:55:11 by dshirais         ###   ########.fr       */
+/*   Created: 2025/12/27 20:54:51 by dshirais          #+#    #+#             */
+/*   Updated: 2025/12/27 20:55:27 by dshirais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	pb(t_list **a, t_list **b)
+int	back_to_a(t_list **a, t_list **b)
 {
-	t_list	*temp;
-	int		check;
+	int	check;
 
-	if (!a || !(*a))
-		return (-1);
-	temp = *a;
-	*a = temp->next;
-	temp->next = *b;
-	(*b) = temp;
-	check = write(1, "pb\n", 3);
-	return (check);
+	while (*b)
+	{
+		check = pa(a, b);
+		if (check < 0)
+			return (-1);
+	}
+	return (0);
 }
 
-int	pa(t_list **a, t_list **b)
+int	zero_sort_check(t_list *a)
 {
-	t_list	*temp;
-	int		check;
-
-	if (!b || !(*b))
-		return (-1);
-	temp = *b;
-	*b = temp->next;
-	temp->next = *a;
-	(*a) = temp;
-	check = write(1, "pa\n", 3);
-	return (check);
+	while (a->next)
+	{
+		if (a->rank > a->next->rank)
+			return (1);
+		a = a->next;
+	}
+	return (0);
 }

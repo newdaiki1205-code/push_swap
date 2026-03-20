@@ -1,20 +1,31 @@
 NAME = push_swap
 
-SRC = main.c sort_array.c map_array.c list_handling.c rule_swap.c rule_push.c rule_rotate.c rule_reverse_rotate.c radix_sort.c mini_sort.c medi_sort.c medi_sort_help.c
+SRC = main.c \
+	./Dataprocessing/sort_array.c \
+	./Dataprocessing/map_array.c \
+	./Dataprocessing/list_handling.c \
+	./Rules/rule_swap.c \
+	./Rules/rule_push.c \
+	./Rules/rule_rotate.c \
+	./Rules/rule_reverse_rotate.c \
+	./Sortalgorithm/radix_sort.c \
+	./Sortalgorithm/mini_sort.c \
+	./Sortalgorithm/medi_sort.c \
+	./Sortalgorithm/medi_sort_help.c \
 
 CC = cc
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra 
 
-HEAD = push_swap.h 
+HEAD = -I.
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(OBJ) 
 	$(CC) $(FLAGS) -g $(OBJ) -o $(NAME)
 
-%.o: %.c $(HEAD)
-	$(CC) $(FLAGS) -g -c $< -o $@
+%.o: %.c 
+	$(CC) $(FLAGS) $(HEAD) -g -c $< -o $@
 
 clean:
 		rm -f $(OBJ)

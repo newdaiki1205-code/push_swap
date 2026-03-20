@@ -1,0 +1,79 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_handling.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/01 17:05:25 by dshirais          #+#    #+#             */
+/*   Updated: 2025/12/27 14:58:50 by dshirais         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+t_list	*make_newnode(t_maparray look_up)
+{
+	t_list	*newnode;
+
+	newnode = (t_list *)malloc(sizeof(t_list));
+	if (!newnode)
+		return (NULL);
+	newnode->content = look_up.value;
+	newnode->rank = look_up.rank;
+	newnode->next = NULL;
+	return (newnode);
+}
+
+void	add_back(t_list **head, t_list *newnode)
+{
+	t_list	*current;
+	t_list	*temp;
+
+	if (!head || !newnode)
+		return ;
+	if (!*head)
+	{
+		newnode->next = *head;
+		*head = newnode;
+		return ;
+	}
+	current = *head;
+	while ((current)->next)
+		current = current->next;
+	temp = current->next;
+	newnode->next = temp;
+	current->next = newnode;
+}
+
+void	free_list(t_list **head)
+{
+	t_list	*temp;
+
+	while (*head)
+	{
+		temp = *head;
+		*head = (*head)->next;
+		free(temp);
+	}
+}
+
+t_list	*make_stack_a(t_maparray *look_up, int size)
+{
+	int		i;
+	t_list	*head;
+	t_list	*newnode;
+
+	head = NULL;
+	i = 0;
+	while (i < size)
+	{
+		newnode = make_newnode(look_up[i]);
+		if (!newnode)
+			return (free_list(&head), NULL);
+		add_back(&head, newnode);
+		i++;
+	}
+	free(look_up);
+	return (head);
+}

@@ -1,5 +1,5 @@
+_This project has been created as part of the 42 curriculum by dshirais._
 # Push_swap
-This project has been created as part of the 42 curriculum by dshirais.
 
 ## Description
 Push_swap is a highly efficient C project that solves a logic puzzle: sorting a stack of integers using two stacks (Stack A and Stack B) and a limited set of operations. 
@@ -8,8 +8,11 @@ This implementation focuses on algorithmic efficiency by using **Coordinate Comp
 
 ### Features
 **Robust Parsing**: Handles edge cases such as non-numeric input, integer overflows (using long for safe checks), and duplicate values.
+
 **Data Normalization**: Converts raw integers into ranks ($0$ to $N-1$) to simplify the sorting process and enable bitwise operations.
-**Optimized Radix Sort**: Uses bitwise manipulation to sort large stacks in $O(N \log N)$ time complexity.
+
+**Optimized Radix Sort**: Uses bitwise manipulation to sort large stacks.
+
 **Custom Linked List Stack**: A custom implementation of a stack structure tailored for the required push, swap, and rotate operations.
 
 ## Instructions
@@ -28,6 +31,14 @@ Run the program by providing a list of integers as arguments:
 To count the number of operations, you can pipe the output to wc:
 ```
 ./push_swap 3 2 5 1 4 | wc -l
+```
+
+### Evaluation
+Use a tester and follow the instruction:
+```
+bash
+ARG="numbers" ; ./push_swap $ARG | ./check_OS $ARG
+ARG="numbers" ; ./push_swap $ARG | wc -l
 ```
 
 ### Clean up
